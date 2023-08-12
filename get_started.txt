@@ -1,0 +1,4 @@
+First change the path for the models in extra_model_paths.yaml
+Second Add Custom nodes script
+Copy over user-run.bat and add to homescreen
+Create counter.txt and initialize it with 1
