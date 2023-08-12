@@ -76,7 +76,6 @@ class CustomSaveImage:
     CATEGORY = "Vdoc Custom Nodes"
 
     def save_images(self, images, text_prompt, seed_num, prompt=None, extra_pnginfo=None):
-        results = list()
         for image in images:
             i = 255. * image.cpu().numpy()
             img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
@@ -88,7 +87,7 @@ class CustomSaveImage:
                 if extra_pnginfo is not None:
                     for x in extra_pnginfo:
                         metadata.add_text(x, json.dumps(extra_pnginfo[x]))
-            # seed = prompt["3"]["inputs"]["seed"]
+
             with open('counter.txt', 'r') as file:
                 current_value = int(file.read().strip())
 
@@ -96,34 +95,11 @@ class CustomSaveImage:
             with open('counter.txt', 'w') as file:
                 file.write(str(new_value))
 
-            # import re
-
-            # def clean_file_name(input_string):
-            #     allowed_chars = r'[^a-zA-Z0-9_\- ,]'
-                
-            #     clean_name = re.sub(allowed_chars, '', input_string)
-                
-            #     return clean_name
-
-            # # input_string = "My/File:Name?With<Allowed>Characters"
-            # cleaned_text_prompt = clean_file_name(text_prompt)
 
 
             file = f'{current_value:05d}-{seed_num}-{text_prompt}.png'
             print("2nd")
             img.save(os.path.join(self.output_dir, file), pnginfo=metadata, compress_level=4)
-            # results.append({
-            #     "filename": file,
-            #     "subfolder": self.output_dir,
-            #     "type": self.type
-            # })
-            # results.append({
-            #     "filename": os.path.join(self.output_dir, file),
-            #     "subfolder": "",
-            #     "type": self.type
-            # })
-
-        # return { "ui": { "images": results } }
 
         return {"ui": {"text": "something"}}
     
