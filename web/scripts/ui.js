@@ -1,5 +1,4 @@
 import {api} from "./api.js";
-
 export function $el(tag, propsOrChildren, children) {
 	const split = tag.split(".");
 	const element = document.createElement(split.shift());
@@ -739,6 +738,11 @@ export class ComfyUI {
 				id: "comfy-refresh-button",
 				textContent: "Refresh",
 				onclick: () => app.refreshComboInNodes()
+			}),
+			$el("button", {
+				id: "comfy-open-folder-button",
+				textContent: "Open Folder",
+				onclick: () =>  { app.ui.dialog.show("F:\\Art\\stable_diffusion_outputs\\ComfyUI");;}
 			}),
 			$el("button", {id: "comfy-clipspace-button", textContent: "Clipspace", onclick: () => app.openClipspace()}),
 			$el("button", {

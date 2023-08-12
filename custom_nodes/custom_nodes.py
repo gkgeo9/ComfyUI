@@ -96,18 +96,32 @@ class CustomSaveImage:
             with open('counter.txt', 'w') as file:
                 file.write(str(new_value))
 
+            # import re
+
+            # def clean_file_name(input_string):
+            #     allowed_chars = r'[^a-zA-Z0-9_\- ,]'
+                
+            #     clean_name = re.sub(allowed_chars, '', input_string)
+                
+            #     return clean_name
+
+            # # input_string = "My/File:Name?With<Allowed>Characters"
+            # cleaned_text_prompt = clean_file_name(text_prompt)
+
+
             file = f'{current_value:05d}-{seed_num}-{text_prompt}.png'
+            print("2nd")
             img.save(os.path.join(self.output_dir, file), pnginfo=metadata, compress_level=4)
             # results.append({
             #     "filename": file,
             #     "subfolder": self.output_dir,
             #     "type": self.type
             # })
-            results.append({
-                "filename": os.path.join(self.output_dir, file),
-                "subfolder": "",
-                "type": self.type
-            })
+            # results.append({
+            #     "filename": os.path.join(self.output_dir, file),
+            #     "subfolder": "",
+            #     "type": self.type
+            # })
 
         # return { "ui": { "images": results } }
 
