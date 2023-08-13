@@ -50,8 +50,6 @@ class CustomCLIPTextEncode:
         return ([[cond, {"pooled_output": pooled}]], text)
 
 
-
-
 class CustomSaveImage:
     def __init__(self):
         self.output_dir = "F:\\Art\\stable_diffusion_outputs\\ComfyUI"
