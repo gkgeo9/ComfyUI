@@ -1,5 +1,6 @@
 import torch
-
+import json
+import re
 import os
 import sys
 import json
@@ -1287,8 +1288,7 @@ class SaveImage:
                 "subfolder": subfolder,
                 "type": self.type
             })
-          
-
+            
             counter += 1
 
         return { "ui": { "images": results } }
@@ -1322,6 +1322,32 @@ class LoadImage:
     def load_image(self, image):
         image_path = folder_paths.get_annotated_filepath(image)
         i = Image.open(image_path)
+            
+        def print_image_metadata(image_path):
+            try:
+                image = Image.open(image_path)
+                metadata = image.info
+                # print(metadata)
+                print("Metadata for image:", image_path)
+                for key, value in metadata.items():
+                    if key == "prompt":
+                        metadata_output = str(json.loads(value))
+                        noise_seed_match = re.search(r"'noise_seed': (\d+)", metadata_output)
+                        if noise_seed_match:
+                            noise_seed = int(noise_seed_match.group(1))
+                            print("noise_seed:", noise_seed)
+
+                        # Extract text_prompt value
+                        text_prompt_match = re.search(r"'text_prompt': '([^']*)'", metadata_output)
+                        if text_prompt_match:
+                            text_prompt = text_prompt_match.group(1)
+                            print("text_prompt:", text_prompt)
+
+                image.close()
+            except Exception as e:
+                print("An error occurred:", str(e))
+        print_image_metadata(image_path)
+
         i = ImageOps.exif_transpose(i)
         image = i.convert("RGB")
         image = np.array(image).astype(np.float32) / 255.0
