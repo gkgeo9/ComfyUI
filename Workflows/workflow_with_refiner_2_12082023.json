@@ -168,7 +168,7 @@
       "title": "Prompt (positive)",
       "properties": {},
       "widgets_values": [
-        "hot succubus with sword in hand with lots of blood, in dark ominous forest with purple and green aurora borealis, stylized, realistic, photo, "
+        "prompt here"
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -287,52 +287,6 @@
         1024,
         1024,
         1
-      ]
-    },
-    {
-      "id": 21,
-      "type": "PrimitiveNode",
-      "pos": [
-        140,
-        710
-      ],
-      "size": [
-        277.50309082031254,
-        82
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 4,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "links": [
-            29,
-            44,
-            46,
-            49
-          ],
-          "widget": {
-            "name": "noise_seed",
-            "config": [
-              "INT",
-              {
-                "default": 0,
-                "min": 0,
-                "max": 18446744073709552000
-              }
-            ]
-          },
-          "slot_index": 0
-        }
-      ],
-      "properties": {},
-      "widgets_values": [
-        1028842848161821,
-        "randomize"
       ]
     },
     {
@@ -882,31 +836,50 @@
       "bgcolor": "#353"
     },
     {
-      "id": 28,
-      "type": "PreviewImage",
+      "id": 21,
+      "type": "PrimitiveNode",
       "pos": [
-        1847,
-        231
+        140,
+        710
       ],
-      "size": {
-        "0": 451.95416259765625,
-        "1": 475.0289001464844
+      "size": [
+        277.73742065429644,
+        82
+      ],
+      "flags": {
+        "collapsed": false
       },
-      "flags": {},
-      "order": 17,
+      "order": 4,
       "mode": 0,
-      "inputs": [
+      "outputs": [
         {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 45
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            29,
+            44,
+            46,
+            49
+          ],
+          "widget": {
+            "name": "noise_seed",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          },
+          "slot_index": 0
         }
       ],
-      "properties": {
-        "Node name for S&R": "PreviewImage"
-      },
-      "color": "#223",
-      "bgcolor": "#335"
+      "properties": {},
+      "widgets_values": [
+        1028842848161821,
+        "randomize"
+      ]
     },
     {
       "id": 25,
@@ -978,7 +951,7 @@
         "enable",
         242616950307171,
         "randomize",
-        30,
+        20,
         8,
         "dpmpp_sde_gpu",
         "normal",
@@ -986,6 +959,33 @@
         10000,
         "disable"
       ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 28,
+      "type": "PreviewImage",
+      "pos": [
+        1845,
+        230
+      ],
+      "size": {
+        "0": 451.95416259765625,
+        "1": 475.0289001464844
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 45
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
       "color": "#223",
       "bgcolor": "#335"
     }

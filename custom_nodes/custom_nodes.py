@@ -92,6 +92,9 @@ class CustomSaveImage:
             new_value = current_value + 1
             with open('counter.txt', 'w') as file:
                 file.write(str(new_value))
+            
+            with open('previous_seeds.txt', 'w') as file:
+                file.write(str(seed_num))
 
 
 
@@ -101,17 +104,43 @@ class CustomSaveImage:
 
         return {"ui": {"text": "something"}}
     
+class PreviousSeed:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required":
+                    {
+                     "seed_num":("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff})
+                     },
+                }
+    
+    RETURN_TYPES = ("INT", )
+    FUNCTION = "return_"
 
+    OUTPUT_NODE = True
+
+    CATEGORY = "Vdoc Custom Nodes"
+    def return_(self, seed_num):
+        if seed_num == 0:
+            temp = 0
+            with open('previous_seeds.txt', 'r') as file:
+                current_value = int(file.read().strip())
+                temp = current_value
+                print("seed", current_value)
+            print("askljdajsdjklasjdkljalksjdjas", temp)
+            return (int(temp),)
+        return (int(seed_num),)
 
 # A dictionary that contains all nodes you want to export with their names
 # NOTE: names should be globally unique
 NODE_CLASS_MAPPINGS = {
     "CustomSaveImage": CustomSaveImage,
-    "CustomCLIPTextEncode": CustomCLIPTextEncode
+    "CustomCLIPTextEncode": CustomCLIPTextEncode,
+    "PreviousSeed":PreviousSeed
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
 NODE_DISPLAY_NAME_MAPPINGS = {
     "CustomSaveImage": "Custom Save Image",
-    "CustomCLIPTextEncode": "Custom CLIP Text Encode"
+    "CustomCLIPTextEncode": "Custom CLIP Text Encode",
+    "PreviousSeed":"PreviousSeed"
 }
