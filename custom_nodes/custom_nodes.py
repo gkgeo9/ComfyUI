@@ -75,6 +75,7 @@ class CustomSaveImage:
 
     def save_images(self, images, text_prompt, seed_num, prompt=None, extra_pnginfo=None):
         for image in images:
+            print("save iomage seedddd", seed_num)
             i = 255. * image.cpu().numpy()
             img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
             metadata = None
@@ -96,9 +97,9 @@ class CustomSaveImage:
             with open('previous_seeds.txt', 'w') as file:
                 file.write(str(seed_num))
 
+            # print(str(text_prompt)[0:30])
 
-
-            file = f'{current_value:05d}-{seed_num}-{text_prompt}.png'
+            file = f'{current_value:05d}-{seed_num}-{str(text_prompt)[0:30]}.png'
             print("2nd")
             img.save(os.path.join(self.output_dir, file), pnginfo=metadata, compress_level=4)
 
@@ -125,8 +126,8 @@ class PreviousSeed:
             with open('previous_seeds.txt', 'r') as file:
                 current_value = int(file.read().strip())
                 temp = current_value
-                print("seed", current_value)
-            print("askljdajsdjklasjdkljalksjdjas", temp)
+                # print("Seed:", current_value)
+            print("Seed:", temp)
             return (int(temp),)
         return (int(seed_num),)
 

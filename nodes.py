@@ -1333,7 +1333,7 @@ class LoadImage:
                     if key == "prompt":
                         # print(value)
                         metadata_output = str(json.loads(value))
-                        noise_seed_match = re.search(r"'noise_seed': (\d+)", metadata_output)
+                        noise_seed_match = re.search(r"'seed_num': (\d+)", metadata_output)
                         if noise_seed_match:
                             noise_seed = int(noise_seed_match.group(1))
                             print("noise_seed:", noise_seed)

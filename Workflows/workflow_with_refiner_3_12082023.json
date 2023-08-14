@@ -1,0 +1,1364 @@
+{
+  "last_node_id": 37,
+  "last_link_id": 64,
+  "nodes": [
+    {
+      "id": 7,
+      "type": "CLIPTextEncodeSDXL",
+      "pos": [
+        450,
+        430
+      ],
+      "size": {
+        "0": 400,
+        "1": 270
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 5
+        },
+        {
+          "name": "text_g",
+          "type": "STRING",
+          "link": 8,
+          "widget": {
+            "name": "text_g",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_G"
+              }
+            ]
+          },
+          "slot_index": 1
+        },
+        {
+          "name": "text_l",
+          "type": "STRING",
+          "link": 9,
+          "widget": {
+            "name": "text_l",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_L"
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXL"
+      },
+      "widgets_values": [
+        4096,
+        4096,
+        0,
+        0,
+        1024,
+        1024,
+        "watermark, text, signature, writing",
+        "watermark, text, signature, writing"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "PrimitiveNode",
+      "pos": [
+        105,
+        449
+      ],
+      "size": {
+        "0": 313.7579040527344,
+        "1": 157.0029296875
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            8,
+            9,
+            33
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "text_g",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_G"
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Prompt (negative)",
+      "properties": {},
+      "widgets_values": [
+        ""
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 12,
+      "type": "VAEDecode",
+      "pos": [
+        1120,
+        690
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 38
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            18,
+            47
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 22,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        240,
+        -10
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            36
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            30,
+            31
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            41
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "sd_xl_refiner_1.0.safetensors"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 26,
+      "type": "VAEDecode",
+      "pos": [
+        1110,
+        200
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 39
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 41
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            40,
+            45
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 4,
+      "type": "CLIPTextEncodeSDXL",
+      "pos": [
+        450,
+        380
+      ],
+      "size": {
+        "0": 400,
+        "1": 270
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 1
+        },
+        {
+          "name": "text_g",
+          "type": "STRING",
+          "link": 25,
+          "widget": {
+            "name": "text_g",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_G"
+              }
+            ]
+          },
+          "slot_index": 1
+        },
+        {
+          "name": "text_l",
+          "type": "STRING",
+          "link": 26,
+          "widget": {
+            "name": "text_l",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_L"
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            11
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXL"
+      },
+      "widgets_values": [
+        4096,
+        4096,
+        0,
+        0,
+        1024,
+        1024,
+        "enlightend compassionate, empathetic, confident, unique fire hell demon woman no clothing peacocks and vines leaves bush, natural scorched frozen beauty portrait, artgerm, peter mohrbacher",
+        "enlightend compassionate, empathetic, confident, unique fire hell demon woman no clothing peacocks and vines leaves bush, natural scorched frozen beauty portrait, artgerm, peter mohrbacher"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 24,
+      "type": "CLIPTextEncodeSDXLRefiner",
+      "pos": [
+        460,
+        10
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 31,
+          "slot_index": 0
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 33,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            34
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXLRefiner"
+      },
+      "widgets_values": [
+        2.5,
+        1024,
+        1024,
+        "watermark, text, signature, writing"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 23,
+      "type": "CLIPTextEncodeSDXLRefiner",
+      "pos": [
+        460,
+        -40
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 30
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 32,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            35
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeSDXLRefiner"
+      },
+      "widgets_values": [
+        6,
+        1024,
+        1024,
+        "enlightend compassionate, empathetic, confident, unique fire hell demon woman no clothing peacocks and vines leaves bush, natural scorched frozen beauty portrait, artgerm, peter mohrbacher"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 28,
+      "type": "PreviewImage",
+      "pos": [
+        1845,
+        230
+      ],
+      "size": {
+        "0": 451.95416259765625,
+        "1": 475.0289001464844
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 45
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 15,
+      "type": "PreviewImage",
+      "pos": [
+        1370,
+        230
+      ],
+      "size": {
+        "0": 451.95416259765625,
+        "1": 475.0289001464844
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 18
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 29,
+      "type": "CustomSaveImage",
+      "pos": [
+        1370,
+        760
+      ],
+      "size": {
+        "0": 409.8668518066406,
+        "1": 78
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 47
+        },
+        {
+          "name": "text_prompt",
+          "type": "STRING",
+          "link": 48,
+          "widget": {
+            "name": "text_prompt",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "seed_num",
+          "type": "INT",
+          "link": 61,
+          "widget": {
+            "name": "seed_num",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          },
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CustomSaveImage"
+      },
+      "widgets_values": [
+        "enlightend compassionate, empathetic, confident, unique fire hell demon woman no clothing peacocks and vines leaves bush, natural scorched frozen beauty portrait, artgerm, peter mohrbacher",
+        368766367682566
+      ]
+    },
+    {
+      "id": 20,
+      "type": "CustomSaveImage",
+      "pos": [
+        1360,
+        180
+      ],
+      "size": {
+        "0": 409.8668518066406,
+        "1": 78
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 40
+        },
+        {
+          "name": "text_prompt",
+          "type": "STRING",
+          "link": 28,
+          "widget": {
+            "name": "text_prompt",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "seed_num",
+          "type": "INT",
+          "link": 63,
+          "widget": {
+            "name": "seed_num",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          },
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CustomSaveImage"
+      },
+      "widgets_values": [
+        "enlightend compassionate, empathetic, confident, unique fire hell demon woman no clothing peacocks and vines leaves bush, natural scorched frozen beauty portrait, artgerm, peter mohrbacher",
+        368766367682566
+      ]
+    },
+    {
+      "id": 5,
+      "type": "PrimitiveNode",
+      "pos": [
+        109,
+        226
+      ],
+      "size": {
+        "0": 301.49212646484375,
+        "1": 166.744873046875
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            25,
+            26,
+            28,
+            32,
+            48
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "text_g",
+            "config": [
+              "STRING",
+              {
+                "multiline": true,
+                "default": "CLIP_G"
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Prompt (positive)",
+      "properties": {},
+      "widgets_values": [
+        "prompt"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 11,
+      "type": "EmptyLatentImage",
+      "pos": [
+        442,
+        472
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            13
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        104,
+        51
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            12
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            1,
+            5
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "sd_xl_base_1.0.safetensors"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 36,
+      "type": "PrimitiveNode",
+      "pos": [
+        105.0909028486771,
+        688.8178433504972
+      ],
+      "size": [
+        282.8181667761369,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            64
+          ],
+          "widget": {
+            "name": "seed_num",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        0,
+        "fixed"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "PreviousSeed",
+      "pos": [
+        409.09090284867733,
+        697.8178433504972
+      ],
+      "size": {
+        "0": 210,
+        "1": 54
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "seed_num",
+          "type": "INT",
+          "link": 64,
+          "widget": {
+            "name": "seed_num",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          },
+          "slot_index": 0
+        },
+        {
+          "name": "onTrigger",
+          "type": -1,
+          "link": null,
+          "optional": true,
+          "nameLocked": true,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            59,
+            60,
+            61,
+            63
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "onExecuted",
+          "type": -1,
+          "links": null,
+          "optional": true,
+          "nameLocked": true,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviousSeed"
+      },
+      "widgets_values": [
+        0
+      ]
+    },
+    {
+      "id": 37,
+      "type": "Note",
+      "pos": [
+        172.09090284867708,
+        814.8178433504972
+      ],
+      "size": [
+        388.2604508833447,
+        99.16885098544003
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Steps to use:\nIf you want random, choose random and change the value to not 0\nIf you want previous, choose fixed and change the value to 0\nIf you want fixed, choose fixed change the value to not 0"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 10,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        678,
+        302
+      ],
+      "size": {
+        "0": 315,
+        "1": 334
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 12
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 11
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 10
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 13
+        },
+        {
+          "name": "noise_seed",
+          "type": "INT",
+          "link": 59,
+          "widget": {
+            "name": "noise_seed",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          },
+          "slot_index": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            37,
+            38
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerAdvanced"
+      },
+      "widgets_values": [
+        "enable",
+        342531682940241,
+        "randomize",
+        12,
+        8,
+        "dpmpp_sde_gpu",
+        "normal",
+        0,
+        10000,
+        "enable"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 25,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        1021,
+        300
+      ],
+      "size": {
+        "0": 315,
+        "1": 334
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 36
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 35
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 34
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 37
+        },
+        {
+          "name": "noise_seed",
+          "type": "INT",
+          "link": 60,
+          "widget": {
+            "name": "noise_seed",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0,
+                "max": 18446744073709552000
+              }
+            ]
+          },
+          "slot_index": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            39
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerAdvanced"
+      },
+      "widgets_values": [
+        "enable",
+        47565539404310,
+        "randomize",
+        20,
+        8,
+        "dpmpp_sde_gpu",
+        "normal",
+        12,
+        10000,
+        "disable"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      1,
+      4,
+      0,
+      "CLIP"
+    ],
+    [
+      5,
+      2,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      8,
+      6,
+      0,
+      7,
+      1,
+      "STRING"
+    ],
+    [
+      9,
+      6,
+      0,
+      7,
+      2,
+      "STRING"
+    ],
+    [
+      10,
+      7,
+      0,
+      10,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      11,
+      4,
+      0,
+      10,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      12,
+      2,
+      0,
+      10,
+      0,
+      "MODEL"
+    ],
+    [
+      13,
+      11,
+      0,
+      10,
+      3,
+      "LATENT"
+    ],
+    [
+      15,
+      2,
+      2,
+      12,
+      1,
+      "VAE"
+    ],
+    [
+      18,
+      12,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      25,
+      5,
+      0,
+      4,
+      1,
+      "STRING"
+    ],
+    [
+      26,
+      5,
+      0,
+      4,
+      2,
+      "STRING"
+    ],
+    [
+      28,
+      5,
+      0,
+      20,
+      1,
+      "STRING"
+    ],
+    [
+      30,
+      22,
+      1,
+      23,
+      0,
+      "CLIP"
+    ],
+    [
+      31,
+      22,
+      1,
+      24,
+      0,
+      "CLIP"
+    ],
+    [
+      32,
+      5,
+      0,
+      23,
+      1,
+      "STRING"
+    ],
+    [
+      33,
+      6,
+      0,
+      24,
+      1,
+      "STRING"
+    ],
+    [
+      34,
+      24,
+      0,
+      25,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      35,
+      23,
+      0,
+      25,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      36,
+      22,
+      0,
+      25,
+      0,
+      "MODEL"
+    ],
+    [
+      37,
+      10,
+      0,
+      25,
+      3,
+      "LATENT"
+    ],
+    [
+      38,
+      10,
+      0,
+      12,
+      0,
+      "LATENT"
+    ],
+    [
+      39,
+      25,
+      0,
+      26,
+      0,
+      "LATENT"
+    ],
+    [
+      40,
+      26,
+      0,
+      20,
+      0,
+      "IMAGE"
+    ],
+    [
+      41,
+      22,
+      2,
+      26,
+      1,
+      "VAE"
+    ],
+    [
+      45,
+      26,
+      0,
+      28,
+      0,
+      "IMAGE"
+    ],
+    [
+      47,
+      12,
+      0,
+      29,
+      0,
+      "IMAGE"
+    ],
+    [
+      48,
+      5,
+      0,
+      29,
+      1,
+      "STRING"
+    ],
+    [
+      59,
+      31,
+      0,
+      10,
+      4,
+      "INT"
+    ],
+    [
+      60,
+      31,
+      0,
+      25,
+      4,
+      "INT"
+    ],
+    [
+      61,
+      31,
+      0,
+      29,
+      2,
+      "INT"
+    ],
+    [
+      63,
+      31,
+      0,
+      20,
+      2,
+      "INT"
+    ],
+    [
+      64,
+      36,
+      0,
+      31,
+      0,
+      "INT"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Group",
+      "bounding": [
+        91,
+        618,
+        538,
+        303
+      ],
+      "color": "#3f789e"
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
